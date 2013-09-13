@@ -106,6 +106,13 @@ span.numero {
 .fin {
   height: 10px;
   background-color: #646464; 
-
   bottom: 0;
+}
+
+
+.img-logo {
+  float: right;
+    position: relative;
+    top: 25px;
+    width: 80px;
 }
