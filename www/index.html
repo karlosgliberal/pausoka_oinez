@@ -1,51 +1,35 @@
 <!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
+<!--[if IE 8]>               <html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
     <head>
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+            <meta charset="utf-8">
+            <link rel="stylesheet" href="css/foundation.css">
+            <script src="js/vendor/custom.modernizr.js"></script>
         <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <link rel="stylesheet" type="text/css" href="css/topcoat-mobile-light.css">
-        <title>Hello World</title>
+        <title>Pausoka Oinez</title>
     </head>
     <body>
+        <div class="row">
+        <div class="large-12 columns">
+            <h2>Welcome to Foundation</h2>
+            <p>This is version 4.3.1.</p>
+            <hr />
+        </div>
+         </div>
         <div class="app">
         <div class="distancia"></div>
         <div class="total"></div>
         <div class="texto"></div>
             <h1>Tipi tapa</h1>
-            <br>
-            <label class="topcoat-checkbox__label">
             <input type="checkbox" class="lat">
-            <div class="topcoat-checkbox"></div>
-            </label>
-            <br>
-            <hr />
-            <br>
-            <label class="topcoat-checkbox__label">
             <input type="checkbox" class="error">
-            <div class="topcoat-checkbox"></div>
-            </label>
             <p> 
-                <input id="nombre" type="text" class="topcoat-text-input--large" value="" placeholder="nombre" name="nombre">
+                <input id="nombre" type="text" value="" placeholder="nombre" name="nombre">
                 <button id="track" class="topcoat-button is-disabled">track</button>
             </p>
             <div id="deviceready" class="blink">
@@ -58,9 +42,11 @@
 
         </div>
         <script type="text/javascript" src="js/jquery.js"></script>
+        <script src="js/foundation.min.js"></script>
         <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
+            $(document).foundation();
             $(document).ready(function() {
                     app.initialize();
             });

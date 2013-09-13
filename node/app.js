@@ -3,7 +3,7 @@ var express = require('express'),
     path = require('path');
 var Firebase = require('firebase');
 var FirebaseTokenGenerator = require("firebase-token-generator");
-var tokenGenerator = new FirebaseTokenGenerator('xuyLUp30fibTHZ3EXcqSyBUWO5yfS3DWc7n16dTv');
+var tokenGenerator = new FirebaseTokenGenerator('fRVy2CxoB5J7iMCNioKDIZZD5DdBkc0ryhDyqkMT');
 var token = tokenGenerator.createToken({admin: true});
 var dataRef = new Firebase("https://oinez.firebaseio.com/");
 
