@@ -27,6 +27,7 @@ body {
     font-size: 1em;
     padding-top: 17px;
     text-transform: uppercase;
+       padding-left: 15px;
 }
 
 .header {
@@ -66,7 +67,7 @@ span.numero {
 .contador span {
     left: 48px;
     position: relative;
-    top: 70px;
+    top: 60px;
 }
 
 .boton {
@@ -91,7 +92,11 @@ span.numero {
 }
 
 .activacion {
-  margin-top: 30px;
+position: absolute;
+bottom: 0;
+padding-bottom: 50px;
+margin: 0 auto;
+width: 100%;
 }
 
 
@@ -110,8 +115,9 @@ span.numero {
 .img-logo {
    float: right;
     position: relative;
-    top: -27px;
+    top: -31px;
     width: 74px;
+       left: -26px;
 }
 
 
@@ -138,3 +144,18 @@ h4.pausoka {
   text-align: center;
   margin-top: 50px;
 }
+
+
+
+.topcoat-button--large--cta {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.688rem;
+  padding: 0 0.875rem;
+}
+
+
+.xxx {
+  width: 100px;
+}
+
