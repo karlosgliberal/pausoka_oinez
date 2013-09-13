@@ -91,7 +91,7 @@ span.numero {
 }
 
 .activacion {
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 
@@ -112,4 +112,29 @@ span.numero {
     position: relative;
     top: -27px;
     width: 74px;
+}
+
+
+.img-logo-intro {
+margin: 0 auto;
+width: 240px;
+}
+
+.siguiente {
+  text-align: center;
+  font-size: 1.5em;
+}
+
+h4.pausoka {
+  border-bottom: 1px solid #d5d5d5;
+    font-size: 2em;
+    padding-bottom: 14px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+
+.intro {
+  text-align: center;
+  margin-top: 50px;
 }
