@@ -1,0 +1,115 @@
+@font-face {
+  font-family: "Source Sans";
+  src: url("../font/SourceSansPro-Regular.otf");
+}
+@font-face {
+  font-family: "Source Sans";
+  src: url("../font/SourceSansPro-Light.otf");
+  font-weight: 200;
+}
+@font-face {
+  font-family: "Source Sans";
+  src: url("../font/SourceSansPro-Semibold.otf");
+  font-weight: 600;
+}
+
+body {
+  color: #000;
+  font: 16px "Source Sans", helvetica, arial, sans-serif;
+  font-weight: 200;
+  text-rendering: optimizeLegibility;
+  background-color: #ECECEC;
+}
+
+
+.title {
+   color: #FFFFFF;
+    font-size: 1em;
+    padding-top: 17px;
+    text-transform: uppercase;
+}
+
+.header {
+	height: 50px;
+	background-color: #CACCCC;
+}
+
+
+.wrapper-contador {
+	background: url("../img/bg.png") center no-repeat;
+	background-size: cover;
+}
+
+
+
+.pasos {
+	min-height: 300px;
+}
+
+.contador {
+	background: url("../img/circulo.png") center no-repeat;
+	background-size: cover;
+	width: 200px;
+    height: 200px;
+    margin-top: 70px;
+    margin: 0 auto;
+    position: relative;
+    top: 55px;
+}
+
+
+span.numero {
+	font-size: 4em;
+	font-weight: bold;
+}
+
+.contador span {
+    left: 48px;
+    position: relative;
+    top: 70px;
+}
+
+.boton {
+  padding: 15px 10px;
+  background-color: #DB9000;
+  color: #fff;
+  width: 150px;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 0 auto
+}
+
+
+.boton .sin {
+  padding: 15px 10px;
+  background-color: #Ddd;
+  color: #fff;
+  width: 150px;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 0 auto
+}
+
+.activacion {
+  margin-top: 50px;
+}
+
+
+.instrucciones {
+  text-align: center;
+}
+
+
+.fin {
+  height: 10px;
+  background-color: #CACCCC; 
+  bottom: 0;
+}
+
+
+.img-logo {
+   float: right;
+    position: relative;
+    top: -27px;
+    width: 74px;
+}
