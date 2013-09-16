@@ -74,28 +74,17 @@ span.numero {
     top: 60px;
 }
 
-.boton a {
-  padding: 15px 10px;
-  background-color: #DB9000;
-  color: #fff;
-  width: 150px;
-  text-align: center;
-  text-transform: uppercase;
-  margin: 0 auto;
-  font-size: 1em;
-
-}
-
 
 .boton  {
   padding: 15px 10px;
   background-color: #DB9000;
   color: #fff;
-  width: 150px;
+  width: 180px;
   text-align: center;
   text-transform: uppercase;
   margin: 0 auto;
-    font-size: 1.2em;
+  font-size: 1em;
+  border: none
 
 }
 
@@ -163,3 +152,10 @@ p.intro {
 .instrucciones {
 text-transform: uppercase;
 }
+
+
+.boton-wrapper {
+  margin: 0 auto;
+  width: 180px;
+}
+
