@@ -81,7 +81,9 @@ span.numero {
   width: 150px;
   text-align: center;
   text-transform: uppercase;
-  margin: 0 auto
+  margin: 0 auto;
+  font-size: 1em;
+
 }
 
 
@@ -92,19 +94,11 @@ span.numero {
   width: 150px;
   text-align: center;
   text-transform: uppercase;
-  margin: 0 auto
+  margin: 0 auto;
+    font-size: 1.2em;
+
 }
 
-
-/*.boton .sin {
-  padding: 15px 10px;
-  background-color: #Ddd;
-  color: #fff;
-  width: 150px;
-  text-align: center;
-  text-transform: uppercase;
-  margin: 0 auto
-}*/
 
 .activacion {
 position: absolute;
@@ -152,6 +146,7 @@ h4.pausoka {
     padding-bottom: 14px;
     text-align: center;
     margin-bottom: 10px;
+    text-transform: uppercase;
 }
 
 
@@ -164,5 +159,10 @@ h4.pausoka {
 p.intro {
   margin-top: 0.5em;
   line-height: 1.5em;
+  margin-left: 2em;
+  margin-right: 2em;
+}
 
+.instrucciones {
+text-transform: uppercase;
 }
