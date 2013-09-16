@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.phonegap.hello-world" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>Tipitapa</name>
+    <name>Pausoka Oinez</name>
     <description>
-        Denok batera tipi, tapa
+        Pausoka Oinez
     </description>
-    <author email="support@phonegap.com" href="http://phonegap.com">
-        Interzonas
+    <author email="karlosgliberal@gmail.com" href="http://interzonas.info">
+        Interzonas.info
     </author>
     <feature name="http://api.phonegap.com/1.0/device" />
     <preference name="permissions" value="none" />
