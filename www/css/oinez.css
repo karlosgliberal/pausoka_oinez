@@ -89,6 +89,12 @@ span.numero {
 }
 
 
+
+.boton:disabled {
+  background-color: #ccc;
+}
+
+
 .activacion {
 position: absolute;
 bottom: 0;
