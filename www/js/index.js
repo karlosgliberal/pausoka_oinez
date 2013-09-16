@@ -6,7 +6,6 @@ var app = {
     lat1: 42.80971575714766,
     lon1: -1.5883148056029772,
     distanciaMinima: 11,
-    watchID: false,
     total: 0,
     contador: 0,
     texto: false,
@@ -95,23 +94,19 @@ var app = {
 
     enArea: function(position, punto, watchID){
       (punto) ? punto = punto : punto = app.distanciaMinima;
-      (watchID) ? watchID = watchID : watchID = app.watchID;
       var km = app.distancia(app.lat1, app.lon1, position.coords.latitude, position.coords.longitude);
 
       $('.distancia h3').remove();
       $('.distancia').append('<h3>'+ (km).toFixed(3) + ' Km desde el punto de control</h3>');
 
       if(punto>km){
-        $('.topcoat-button').removeClass('is-disabled');
-        $('.error').hide();
+        $('.boton').removeClass('is-disabled');
+        $('.instrucciones').hide();
         return true;
       }else{
-        $('.error').show();
-        $('.topcoat-button').addClass('is-disabled');
-        if(watchID){
-          navigator.geolocation.clearWatch(watchID);
-        }
-        app.mostrarError('.error', 'No estas en el area');
+        $('.instrucciones').show();
+        $('.boton').addClass('is-disabled');
+        app.mostrarError('.instrucciones', 'No estas en el area');
         return false;
       }
     },
@@ -172,12 +167,12 @@ var app = {
 
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
+        // var parentElement = document.getElementById(id);
+        // var listeningElement = parentElement.querySelector('.listening');
+        // var receivedElement = parentElement.querySelector('.received');
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+        // listeningElement.setAttribute('style', 'display:none;');
+        // receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
     }
