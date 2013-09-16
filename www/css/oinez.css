@@ -21,6 +21,10 @@ body {
   background-color: #ECECEC;
 }
 
+a {
+color:#fff;
+text-decoration: none;
+}
 
 .title {
    color: #FFFFFF;
@@ -70,7 +74,7 @@ span.numero {
     top: 60px;
 }
 
-.boton {
+.boton a {
   padding: 15px 10px;
   background-color: #DB9000;
   color: #fff;
@@ -81,7 +85,18 @@ span.numero {
 }
 
 
-.boton .sin {
+.boton  {
+  padding: 15px 10px;
+  background-color: #DB9000;
+  color: #fff;
+  width: 150px;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 0 auto
+}
+
+
+/*.boton .sin {
   padding: 15px 10px;
   background-color: #Ddd;
   color: #fff;
@@ -89,7 +104,7 @@ span.numero {
   text-align: center;
   text-transform: uppercase;
   margin: 0 auto
-}
+}*/
 
 .activacion {
 position: absolute;
@@ -146,16 +161,8 @@ h4.pausoka {
 }
 
 
+p.intro {
+  margin-top: 0.5em;
+  line-height: 1.5em;
 
-.topcoat-button--large--cta {
-  font-size: 0.875rem;
-  font-weight: 600;
-  line-height: 1.688rem;
-  padding: 0 0.875rem;
 }
-
-
-.xxx {
-  width: 100px;
-}
-
