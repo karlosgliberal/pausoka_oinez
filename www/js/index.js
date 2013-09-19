@@ -6,7 +6,12 @@ var app = {
     lat1: 42.80971575714766,
     lon1: -1.5883148056029772,
     distanciaMinima: 11,
+    watchID: null,
+    estoyID: null,
+    countWatch: null,
     total: 0,
+    geolocationID: 0,
+    count: 0,
     contador: 0,
     texto: false,
 
@@ -40,59 +45,81 @@ var app = {
 
         $('#track').click(function(){
           app.peticionesLocalizacion();
+          $('.boton').removeClass('blink');
+          $('.contador span.numero').remove();
+          $('.contador span.km').remove();
+          $('.contador').append('<span class="gps blink">GPS bilatzen</span>');
         });
     },
 
     dondeEstoy: function(punto){
-      var options = {enableHighAccuracy: true };
-      navigator.geolocation.getCurrentPosition(onSuccess, app.onError, options);
+      // var options = {enableHighAccuracy: true };
+      // navigator.geolocation.getCurrentPosition(onSuccess, app.onError, options);
+      app.estoyID = navigator.geolocation.watchPosition(onSuccess, app.onError, { enableHighAccuracy: true, timeout: 10000 });
       function onSuccess(position) {
-        app.guardarDatos('posicion', position);
-        app.enArea(position, app.distanciaMinima);
+        if(position.coords.accuracy < 50){
+          navigator.geolocation.clearWatch(app.estoyID);
+          app.guardarDatos('posicion', position);
+          app.enArea(position, app.distanciaMinima);
+        }
       };
     },
 
     peticionesLocalizacion: function() {
-      var geolocationID;
       getLocation();
 
       function getLocation(){
-        var count = 0;
-          geolocationID = window.setInterval(function() {
-          navigator.geolocation.getCurrentPosition(onSuccess, app.onError, { enableHighAccuracy: true, timeout: 10000 });
-        },15000); //end setInterval;
+          app.geolocationID = window.setInterval(function() {
+          navigator.geolocation.clearWatch(app.watchID);
+          app.watchID = navigator.geolocation.watchPosition(onSuccess, app.onError, { enableHighAccuracy: true, timeout: 10000 });
+        },20000); //end setInterval;
       }
 
       function onSuccess(position) {
-        app.mostrarInfo('.km', position);
-        var posicionAnterior = app.pedirDato('posicion');
-        var kmDistancia = app.distancia(posicionAnterior.coords.latitude, posicionAnterior.coords.longitude, position.coords.latitude, position.coords.longitude);
-        if(kmDistancia > 0.200){
-          app.total = app.total + 0.020;
-        }else{
-          app.total = app.total + kmDistancia;
-          app.guardarDatos('posicion', position);
-        }
-        app.guardarDatos('total', app.total);
-        $('.total h3').remove();
-        $('.total').append('<h3>totaol: '+ app.total+ '</h3>');        
-        app.enArea(position,  app.distanciaMinima, app.watchID);
-        var datosMandar = {
-          'lat': position.coords.latitude, 
-          'lon': position.coords.longitude,
-          'distancia': app.total
-        };
-        app.enviarServidor(position, app.total);
-        //app.enviarServidor(app.total);
-      };
+        $('.contador span.numero').remove();
+        $('.contador span.gps').remove();
+        $('.contador span.km').remove();
+        $('.contador').append('<span class="numero">'+ position.coords.accuracy);
 
-      function onError(error) {
-          alert('code: '    + error.code    + '\n' +
-                'message: ' + error.message + '\n');
-      };
+        if(position.coords.accuracy < 50){
+          var posicionAnterior = app.pedirDato('posicion');
+          var kmDistancia = app.distancia(posicionAnterior.coords.latitude, posicionAnterior.coords.longitude, position.coords.latitude, position.coords.longitude);
+          app.total = app.total + kmDistancia;
+          $('.contador span.numero').remove();
+          $('.contador span.gps').remove();
+          $('.contador span.km').remove();
+          $('.contador').append('<span class="numero">'+ (app.total).toFixed(1) + '</span><span class="km"> km</span>');
+          app.guardarDatos('posicion', position);
+          app.guardarDatos('total', app.total);
+          //TODO
+          //app.enArea(position,  app.distanciaMinima);
+          var datosMandar = {
+            'lat': position.coords.latitude, 
+            'lon': position.coords.longitude,
+            'distancia': app.total
+          };
+          navigator.geolocation.clearWatch(app.watchID);
+          app.enviarServidor(position, app.total);
+        }
+
+      function borrarWatch() {
+        app.count = 0;
+        app.countWatch = window.setInterval(
+          function () {
+            app.count++;
+            if (app.count > 2) {  //when count reaches a number, reset interval
+              window.clearInterval(app.countWatch);
+              navigator.geolocation.clearWatch(app.watchID);
+              app.enviarServidor(position, app.total);
+            } 
+          },
+        5000); //end setInterval;
+      }
+    };
+
     },
 
-    enArea: function(position, punto, watchID){
+    enArea: function(position, punto){
       (punto) ? punto = punto : punto = app.distanciaMinima;
       var km = app.distancia(app.lat1, app.lon1, position.coords.latitude, position.coords.longitude);
 
@@ -100,7 +127,8 @@ var app = {
       $('.distancia').append('<h3>'+ (km).toFixed(3) + ' Km desde el punto de control</h3>');
 
       if(punto>km){
-        $('.boton').removeClass('is-disabled');
+        $('.boton').removeAttr('disabled');
+        $('.boton').addClass('blink');
         $('.instrucciones').hide();
         return true;
       }else{
@@ -113,6 +141,17 @@ var app = {
 
     onError: function(error){
       alert(error);
+      var nombre = 'miren';
+      var datosx = JSON.stringify(error);
+      $.ajax({
+          dataType: 'jsonp',
+          data: "lat="+datosx+"&lon="+position.coords.longitude+"&total="+total+"&nombre="+nombre,
+          jsonp: 'callback',
+          url: 'http://46.105.116.39:7000/logget?callback=?',                     
+          success: function(data) {
+            console.log(data.more);
+          }
+      });
     },
 
     guardarDatos: function(clave, datos) {
@@ -152,8 +191,8 @@ var app = {
 
     enviarServidor: function(position, total){
       //data: "lat="+position.coords.latitude+"&lon="+position.coords.latitude+"&total="+total,  
-      //data: "somedata= lat: "+position.coords.latitude+" log: "+position.coords.longitude,                      
-      var nombre = $('#nombre').val();
+      //data: "somedata= lat: "+position.coords.latitude+" log: "+position.coords.longitude,
+      var nombre = 'karlos_tarde';                      
       $.ajax({
           dataType: 'jsonp',
           data: "lat="+position.coords.latitude+"&lon="+position.coords.longitude+"&total="+total+"&nombre="+nombre,

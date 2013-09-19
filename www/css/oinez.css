@@ -68,6 +68,11 @@ span.numero {
 	font-weight: bold;
 }
 
+span.gps {
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
+}
 .contador span {
     left: 32px;
     position: relative;

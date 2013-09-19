@@ -102,62 +102,22 @@ food.onclick = function(e) {
     };
 
 
-// var julieRef = new Firebase('https://oinez.firebaseio.com/Karlos%20');
-// var countk = 1;
-// julieRef.on('child_added', function(snapshot) {
-//  var msgData = snapshot.val();
-//      marker= L.marker(new L.LatLng(msgData.lat, msgData.lon), {
-//                   icon: L.mapbox.marker.icon({'marker-color': '000000'}),
-//                   draggable: true
-//               });
-//   marker.bindPopup('numero: '+ countk);
-//   marker.addTo(map);
-//   countk++;
-// });
-
-// var julieRef = new Firebase('https://oinez.firebaseio.com/Aitor');
-// var countk = 1;
-// julieRef.on('child_added', function(snapshot) {
-//  var msgData = snapshot.val();
-//      marker= L.marker(new L.LatLng(msgData.lat, msgData.lon), {
-//                   icon: L.mapbox.marker.icon({'marker-color': 'FFFFFF'}),
-//                   draggable: true
-//               });
-  
-//    marker.bindPopup('numero: '+ countk);
-//   marker.addTo(map);
-//   countk++;
-// });
-
-// var julieRef = new Firebase('https://oinez.firebaseio.com/jose');
-// var c = 1;
-// julieRef.on('child_added', function(snapshot) {
-//  var msgData = snapshot.val();
-//      marker= L.marker(new L.LatLng(msgData.lat, msgData.lon), {
-//                   icon: L.mapbox.marker.icon({'marker-color': 'EBA120'}),
-//                   draggable: true
-//               });
-//   marker.bindPopup('numero: '+ c);
-//   marker.addTo(map);
-//   c++;
-// });
-
-// var julieRef = new Firebase('https://oinez.firebaseio.com/Kaixo%20');
-// julieRef.on('child_added', function(snapshot) {
-//  var msgData = snapshot.val();
-//      marker= L.marker(new L.LatLng(msgData.lat, msgData.lon), {
-//                   icon: L.mapbox.marker.icon({'marker-color': 'CC0033'}),
-//                   draggable: true
-//               });
-//   marker.bindPopup('numero');
-//   marker.addTo(map);
-// });
-
-var julieRef = new Firebase('https://oinez.firebaseio.com/Mael');
+var julieRef = new Firebase('https://oinez.firebaseio.com/karlos2');
 julieRef.on('child_added', function(snapshot) {
  var msgData = snapshot.val();
      marker= L.marker(new L.LatLng(msgData.lat, msgData.lon), {
                   icon: L.mapbox.marker.icon({'marker-color': '55BF0A'}),
+                  draggable: true
+              });
+  marker.bindPopup('numero');
+  marker.addTo(map);
+});
+
+var julieRef = new Firebase('https://oinez.firebaseio.com/aitor');
+julieRef.on('child_added', function(snapshot) {
+ var msgData = snapshot.val();
+     marker= L.marker(new L.LatLng(msgData.lat, msgData.lon), {
+                  icon: L.mapbox.marker.icon({'marker-color': '000000'}),
                   draggable: true
               });
   marker.bindPopup('numero');
@@ -184,42 +144,6 @@ function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
 function deg2rad(deg) {
   return deg * (Math.PI/180)
 }
-
-
-/*
-var res = getDistanceFromLatLonInKm(42.8136358, -1.5993407, 42.8080106, -1.5863411);
-var map = L.mapbox.map('map', 'examples.map-9ijuk24y')
-    .setView([42.8090541, -1.5936428], 16);
-var marker = [];
-var pointInit = {coords: [42.83861717 , -1.6029579]};
-window.localStorage.setItem('total', 0);
-window.localStorage.setItem('punto', JSON.stringify(pointInit));
-
-for (var i = 0; i < puntosPekes.length; i++) {
-  var resultado = window.localStorage.getItem('punto');
-  var total = window.localStorage.getItem('total');
-  var pointObj = JSON.parse(resultado);
-  var res = getDistanceFromLatLonInKm(pointObj.coords[0], pointObj.coords[1], puntosPekes[i][0], puntosPekes[i][1]);
-  var totalFloat = parseFloat(total);
-  if(res > 0.200){
-//    var resultadoTotal = totalFloat + 0.017;
-    var resultadoTotal = totalFloat + 0.017;
-  }else{
-    var resultadoTotal = totalFloat + res;
-  }
-  console.log(i +': '+ ' dist: '+ res +' total: '+ resultadoTotal + 'lat: ' + puntosPekes[i][0] +' log: '+ puntosPekes[i][1]);
-
-  pointInit = {coords: [puntosPekes[i][0], puntosPekes[i][1]]};
-  window.localStorage.setItem('punto', JSON.stringify(pointInit));
-  window.localStorage.setItem('total', resultadoTotal);
-  marker[i] = L.marker(new L.LatLng(puntosPekes[i][0], puntosPekes[i][1]), {
-                  icon: L.mapbox.marker.icon({'marker-color': 'CC0033'}),
-                  draggable: true
-              });
-  marker[i].bindPopup('numero '+ i);
-  marker[i].addTo(map);
-};
-*/
 
 // http://leafletjs.com/reference.html#circle
 var circle_options = {
