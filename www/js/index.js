@@ -55,7 +55,7 @@ var app = {
     dondeEstoy: function(punto){
       // var options = {enableHighAccuracy: true };
       // navigator.geolocation.getCurrentPosition(onSuccess, app.onError, options);
-      app.estoyID = navigator.geolocation.watchPosition(onSuccess, app.onError, { enableHighAccuracy: true, timeout: 10000 });
+      app.estoyID = navigator.geolocation.watchPosition(onSuccess, app.onError, { enableHighAccuracy: true });
       function onSuccess(position) {
         if(position.coords.accuracy < 50){
           navigator.geolocation.clearWatch(app.estoyID);
@@ -71,7 +71,7 @@ var app = {
       function getLocation(){
           app.geolocationID = window.setInterval(function() {
           navigator.geolocation.clearWatch(app.watchID);
-          app.watchID = navigator.geolocation.watchPosition(onSuccess, app.onError, { enableHighAccuracy: true, timeout: 10000 });
+          app.watchID = navigator.geolocation.watchPosition(onSuccess, app.onError, { enableHighAccuracy: true, timeout: 15000 });
         },20000); //end setInterval;
       }
 
